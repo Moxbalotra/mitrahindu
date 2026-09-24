@@ -62,6 +62,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -96,7 +97,7 @@ nav a:hover{color:var(--red)}
  radial-gradient(circle at 8% 90%,rgba(7,86,155,.12),transparent 27%),
  linear-gradient(135deg,#fff8e9,#fffdf9 52%,#fff4df);
 }
-.hero:before{content:"";position:absolute;width:620px;height:620px;border:1px solid rgba(138,23,32,.11);border-radius:50%;right:-190px;top:-170px}
+.hero:before{content:"";position:absolute;transform:translate3d(var(--mx,0),var(--my,0),0);width:620px;height:620px;border:1px solid rgba(138,23,32,.11);border-radius:50%;right:-190px;top:-170px}
 .hero:after{content:"";position:absolute;width:780px;height:780px;border:1px solid rgba(216,155,41,.12);border-radius:50%;right:-270px;top:-250px}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center}
 .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:40px;color:var(--red);font-weight:800;box-shadow:0 10px 25px rgba(100,30,20,.06)}
@@ -189,7 +190,9 @@ code{background:#f2e5cf;padding:2px 6px;border-radius:5px}
 .social-follow h3{color:var(--red2);font-size:24px;margin-bottom:5px}
 .social-follow p{color:var(--muted);font-size:14px;margin-bottom:18px}
 .social-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.social-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:145px;padding:12px 18px;border-radius:12px;color:#fff;font-weight:800;transition:.25s;box-shadow:0 8px 22px rgba(0,0,0,.10)}
+.social-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:150px;padding:12px 18px;border-radius:12px;color:#fff;font-weight:800;transition:.25s;box-shadow:0 8px 22px rgba(0,0,0,.10)}
+.social-btn i{font-size:20px;line-height:1}
+.social-btn span{font-size:14px}
 .social-btn:hover{transform:translateY(-3px);filter:brightness(.95)}
 .social-facebook{background:#1877f2}
 .social-instagram{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
@@ -200,6 +203,133 @@ footer{background:#211615;color:#bdb0ab;padding:38px 0 20px}
 .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:40px}
 footer h3{color:#fff;margin-bottom:10px}footer p,footer a{font-size:13px;margin:6px 0}
 .bottom{border-top:1px solid rgba(255,255,255,.1);text-align:center;margin-top:25px;padding-top:18px;font-size:12px}
+
+
+/* =========================
+   PREMIUM WEBSITE ANIMATIONS
+   ========================= */
+@keyframes floatLogo{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-10px) rotate(.7deg)}
+}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 0 0 0 rgba(216,155,41,.22)}
+  50%{box-shadow:0 0 0 18px rgba(216,155,41,0)}
+}
+@keyframes shimmer{
+  0%{background-position:-250% 0}
+  100%{background-position:250% 0}
+}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(18px,-12px,0) rotate(2deg)}
+  100%{transform:translate3d(0,0,0) rotate(0deg)}
+}
+@keyframes rise{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes softScale{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.025)}
+}
+@keyframes borderGlow{
+  0%,100%{border-color:rgba(138,23,32,.13)}
+  50%{border-color:rgba(216,155,41,.55)}
+}
+
+.hero-panel{
+  animation:softScale 6s ease-in-out infinite;
+}
+.hero-logo{
+  animation:floatLogo 5s ease-in-out infinite;
+}
+.badge{
+  animation:pulseGlow 3s ease-in-out infinite;
+}
+.hero:before{
+  animation:drift 11s ease-in-out infinite;
+}
+.hero:after{
+  animation:drift 15s ease-in-out infinite reverse;
+}
+.card{
+  animation:borderGlow 5s ease-in-out infinite;
+}
+.card:nth-child(2){animation-delay:.8s}
+.card:nth-child(3){animation-delay:1.6s}
+.visual img{
+  animation:floatLogo 6s ease-in-out infinite;
+}
+.social-btn{
+  position:relative;
+  overflow:hidden;
+}
+.social-btn:before,
+.btn-red:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:65%;
+  height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:skewX(-20deg);
+  transition:left .7s ease;
+}
+.social-btn:hover:before,
+.btn-red:hover:before{
+  left:140%;
+}
+.btn-red,.social-btn{
+  position:relative;
+}
+.slide img{
+  transition:transform 6s ease;
+}
+.slide:hover img{
+  transform:scale(1.045);
+}
+.head h2{
+  position:relative;
+}
+.head h2:after{
+  content:"";
+  display:block;
+  width:55px;
+  height:3px;
+  border-radius:4px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  margin:12px auto 0;
+  animation:shimmer 3s linear infinite;
+  background-size:250% 100%;
+}
+.nav-btn{
+  position:relative;
+  overflow:hidden;
+}
+.pdf-box{
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.pdf-box:hover{
+  transform:translateY(-3px);
+  box-shadow:0 30px 75px rgba(57,25,10,.18);
+}
+.contact-card,.map{
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.contact-card:hover,.map:hover{
+  transform:translateY(-5px);
+  box-shadow:0 22px 55px rgba(57,25,10,.10);
+}
+@media (prefers-reduced-motion: reduce){
+  *,*:before,*:after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
 
 .reveal{opacity:0;transform:translateY(25px);transition:.7s}.reveal.show{opacity:1;transform:none}
 
@@ -236,11 +366,11 @@ footer h3{color:#fff;margin-bottom:10px}footer p,footer a{font-size:13px;margin:
   <nav>
    <ul>
     <li><a href="#home">होम</a></li>
-    <li><a href="#about">संस्था परिचय</a></li>
-    <li><a href="#schemes">हमारी योजनाएँ</a></li>
-    <li><a href="#gallery">गैलरी</a></li>
+    <li><a href="about-us.html">संस्था परिचय</a></li>
+    <li><a href="yojanye.html">हमारी योजनाएँ</a></li>
+    <li><a href="photo-gallery.html">गैलरी</a></li>
     <li><a href="#pdf">PDF / दस्तावेज़</a></li>
-    <li><a class="nav-btn" href="#contact">संपर्क करें</a></li>
+    <li><a class="nav-btn" href="contact-us.html">संपर्क करें</a></li>
    </ul>
   </nav>
   <button class="menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
@@ -345,12 +475,12 @@ footer h3{color:#fff;margin-bottom:10px}footer p,footer a{font-size:13px;margin:
     <b>📌 PDF LINK कहाँ डालना है?</b><br>
     नीचे JavaScript में <code>
 /* =========================================================
-   SOCIAL MEDIA LINKS:
-   ऊपर social section में:
+   SOCIAL MEDIA LINKS - ONLY EDIT THE HTML URLS
    YOUR_FACEBOOK_LINK
    YOUR_INSTAGRAM_LINK
    YOUR_YOUTUBE_LINK
    को अपनी official profile/channel links से replace करें।
+   Social icons Font Awesome official brand icon set से हैं।
    ========================================================= */
 
 const PDF_URL = "YOUR_PDF_LINK_HERE";</code> वाली line खोजें और उसके अंदर अपनी PDF का पूरा link paste करें।
@@ -395,11 +525,11 @@ const PDF_URL = "YOUR_PDF_LINK_HERE";</code> वाली line खोजें �
   <h3>सोशल मीडिया पर हमें फॉलो करें</h3>
   <p>फाउंडेशन की सेवा गतिविधियों, योजनाओं और नए अपडेट से जुड़े रहें।</p>
   <div class="social-buttons">
-   <!-- नीचे अपने official social media profile URLs डालें -->
-   <a class="social-btn social-facebook" href="YOUR_FACEBOOK_LINK" target="_blank" rel="noopener noreferrer" aria-label="Facebook पर फॉलो करें">f Facebook</a>
-   <a class="social-btn social-instagram" href="YOUR_INSTAGRAM_LINK" target="_blank" rel="noopener noreferrer" aria-label="Instagram पर फॉलो करें">◎ Instagram</a>
-   <a class="social-btn social-youtube" href="YOUR_YOUTUBE_LINK" target="_blank" rel="noopener noreferrer" aria-label="YouTube चैनल सब्सक्राइब करें">▶ YouTube</a>
-   <a class="social-btn social-whatsapp" href="https://wa.me/919166945821" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp पर संपर्क करें">◉ WhatsApp</a>
+   <!-- अपने official social media profile URLs नीचे replace करें -->
+   <a class="social-btn social-facebook" href="YOUR_FACEBOOK_LINK" target="_blank" rel="noopener noreferrer" aria-label="Facebook पर फॉलो करें"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+   <a class="social-btn social-instagram" href="YOUR_INSTAGRAM_LINK" target="_blank" rel="noopener noreferrer" aria-label="Instagram पर फॉलो करें"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+   <a class="social-btn social-youtube" href="YOUR_YOUTUBE_LINK" target="_blank" rel="noopener noreferrer" aria-label="YouTube चैनल सब्सक्राइब करें"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
+   <a class="social-btn social-whatsapp" href="https://wa.me/919166945821" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp पर संपर्क करें"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
   </div>
  </div>
 </section>
@@ -415,7 +545,13 @@ const PDF_URL = "YOUR_PDF_LINK_HERE";</code> वाली line खोजें �
 <footer>
  <div class="container footer-grid">
   <div><h3>मित्रा हिंदू समाज सेवा फाउंडेशन</h3><p>सेवा परमो धर्मः</p><p>सामाजिक सहयोग, परिवार कल्याण और सेवा भावना के लिए समर्पित संस्था।</p></div>
-  <div><h3>त्वरित लिंक</h3><p><a href="#about">संस्था परिचय</a></p><p><a href="#schemes">हमारी योजनाएँ</a></p><p><a href="#gallery">गैलरी</a></p><p><a href="#pdf">PDF दस्तावेज़</a></p></div>
+  <div><h3>महत्वपूर्ण लिंक</h3>
+   <p><a href="about-us.html">About Us</a></p>
+   <p><a href="yojanye.html">योजनाएँ</a></p>
+   <p><a href="photo-gallery.html">Photo Gallery</a></p>
+   <p><a href="contact-us.html">Contact Us</a></p>
+   <p><a href="#pdf">PDF दस्तावेज़</a></p>
+  </div>
   <div><h3>संपर्क</h3><p>9166945821</p><p>बालोतरा, राजस्थान</p><p>U88900RJ2026NPL115440</p></div>
  </div>
  <div class="container bottom">
@@ -427,7 +563,8 @@ const PDF_URL = "YOUR_PDF_LINK_HERE";</code> वाली line खोजें �
 
 <script>
 /* =========================================================
-   1) PDF LINK: सिर्फ नीचे वाली line में अपनी PDF का link डालें
+   PDF LINK - ONLY EDIT THIS CODE LINE
+   अपनी PDF का पूरा URL यहाँ paste करें.
    Example:
    const PDF_URL = "https://example.com/files/foundation.pdf";
    ========================================================= */
@@ -536,10 +673,33 @@ window.addEventListener("resize",()=>{if(pdfDoc)renderPDFPage(pdfPage)});
 loadPDF();
 
 /* reveal animation */
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+const revealObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+   if(entry.isIntersecting){
+     const el=entry.target;
+     const delay=el.dataset.delay || 0;
+     el.style.transitionDelay=delay+"ms";
+     el.classList.add("show");
+     revealObserver.unobserve(el);
+   }
+ });
 },{threshold:.12});
-document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
+
+document.querySelectorAll(".reveal").forEach((el,i)=>{
+  el.dataset.delay=(i%5)*80;
+  revealObserver.observe(el);
+});
+
+/* Add a gentle parallax effect to decorative hero circles. */
+window.addEventListener("mousemove",(e)=>{
+  const x=(e.clientX/window.innerWidth-.5);
+  const y=(e.clientY/window.innerHeight-.5);
+  const hero=document.querySelector(".hero");
+  if(hero && window.innerWidth>900){
+    hero.style.setProperty("--mx",(x*12)+"px");
+    hero.style.setProperty("--my",(y*12)+"px");
+  }
+});
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 </body>
